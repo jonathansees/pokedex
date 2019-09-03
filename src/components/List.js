@@ -6,9 +6,10 @@ class List extends Component {
     renderCards() {
         return (
             this.props.pokemons
-            .map(pokemon => {
+            .filter(pokemon => pokemon.name.includes(this.props.filter.toLowerCase()))
+            .map(filteredPokemon => {
                 return (
-                    <Card key={pokemon.name} pokemon={ pokemon } />
+                    <Card key={filteredPokemon.name} pokemon={ filteredPokemon } />
                 );
             })
         )
