@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import pokeapi from '../apis/pokeapi';
+import location from '../apis/locationapi';
 import _ from 'lodash';
 
 export const fetchPokemons = () => async dispatch => {
@@ -19,8 +20,17 @@ export const fetchPokemons = () => async dispatch => {
     })
 };
 
+const fetchLocation = async (id) => {
+    const response = await location.get('/' + id);
+
+    return response.data.locations
+};
+
 export const fetchPokemon = (id) => async dispatch => {
     const response = await pokeapi.get('https://pokeapi.co/api/v2/pokemon/' + id);
+
+    const locations = await fetchLocation(response.data.id);
+    response.data.locations = locations;
 
     dispatch({
         type: actionTypes.FETCH_POKEMON,
