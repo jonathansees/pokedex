@@ -18,3 +18,12 @@ export const fetchPokemons = () => async dispatch => {
         })
     })
 };
+
+export const fetchPokemon = (id) => async dispatch => {
+    const response = await pokeapi.get('https://pokeapi.co/api/v2/pokemon/' + id);
+
+    dispatch({
+        type: actionTypes.FETCH_POKEMON,
+        payload: response.data
+    })
+};
