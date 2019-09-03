@@ -37,3 +37,18 @@ export const fetchPokemon = (id) => async dispatch => {
         payload: response.data
     })
 };
+
+export const updateBag = (id) => async dispatch => {
+    dispatch({
+        type: actionTypes.UPDATE_BAG,
+        payload: id
+    })
+};
+
+export const toggleBag = (open) => async dispatch => {
+    console.log(open)
+    dispatch({
+        type: actionTypes.TOGGLE_BAG,
+        payload: open
+    })
+};

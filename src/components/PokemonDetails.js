@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPokemon } from '../actions';
+import { fetchPokemon, updateBag } from '../actions';
 
 import Card from './Card';
+import CheckBox from './CheckBox';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
 class PokemonDetails extends Component {
 
     componentDidMount() {
         this.props.fetchPokemon(this.props.match.params.id)
+    }
+
+    changeHandler = () => {
+        this.props.updateBag(this.props.pokemon.id)
     }
 
     render() {
@@ -30,6 +35,13 @@ class PokemonDetails extends Component {
                 <div className="details">
                     <div className="information">
                         <Card pokemon={ this.props.pokemon } />
+                        <CheckBox 
+                            off="No"
+                            on="Yes"
+                            title="In Bag"
+                            onChange={this.changeHandler}
+                            checked={this.props.bag.includes(this.props.pokemon.id)}
+                        />
                         
                         <p>Height: {this.props.pokemon.height}</p>
                         <p>Weight: {this.props.pokemon.weight}</p>
@@ -52,11 +64,12 @@ class PokemonDetails extends Component {
 
 const mapStateToProps = (state) => {
     return { 
-        pokemon: state.pokemon
+        pokemon: state.pokemon,
+        bag: state.bag
     };
 };
 
 export default connect(
     mapStateToProps,
-    { fetchPokemon }
+    { fetchPokemon, updateBag }
 )(PokemonDetails);
