@@ -53,7 +53,7 @@
         text-align: center;
         padding: 10px 5px;
         margin: 0;
-        background-color: $primary-blue;
+        background-image: linear-gradient(to bottom, lighten($primary-blue, 5%), $primary-blue);
         color: white;
         font-weight: 700;
         transform: translateY(50%);

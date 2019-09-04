@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
+import Back from './Back';
 import PokemonLogo from "../assets/svg/PokemonLogo";
-import LeftArrow from "../assets/svg/LeftArrow";
 import '../styles/navbar.scss';
 
 const Nav = () => {
@@ -10,10 +9,7 @@ const Nav = () => {
         <header className="header">
             <div className="container">
                 <div className="user w20">
-                    <Link to="/" className="user--nav">
-                        <LeftArrow width="25px" fill="white" className="user--nav__icon" />
-                        <span className="user--nav__back">BACK</span>
-                    </Link>
+                    <Back />
                 </div>
                 <div className="logo w40">
                     <PokemonLogo height="50px" />
@@ -26,3 +22,6 @@ const Nav = () => {
 }
 
 export default Nav;
+
+
+

@@ -6,6 +6,7 @@
     left: 0;
     height: 80px;
     width: 100%;
+    background-image: linear-gradient(to bottom, lighten($primary-blue, 5%), $primary-blue);
     background-color: $primary-blue;
     // background-color: transparent;
     z-index: 100;
@@ -45,7 +46,7 @@
                 text-decoration: none;
 
                 &:hover {
-                    background-color: lighten($primary-blue, 5%);
+                    background-color: darken($primary-blue, 1%);
                 }
 
                 &__icon {

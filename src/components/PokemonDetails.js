@@ -62,8 +62,6 @@ class PokemonDetails extends Component {
                     <div className="information">
                         <Card pokemon={ this.props.pokemon } />
                         <CheckBox 
-                            off="No"
-                            on="Yes"
                             title="In Bag"
                             onChange={this.changeHandler}
                             checked={this.props.bag.includes(this.props.pokemon.id)}
@@ -77,7 +75,7 @@ class PokemonDetails extends Component {
                     <div className="map">
                         <MyMapComponent
                             isMarkerShown
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCCH7huOkKNhv6PlFSapwdZ3_15kBeW4k"
                             loadingElement={<div style={{ height: `100%` }} />}
                             containerElement={<div style={{ height: `400px` }} />}
                             mapElement={<div style={{ height: `100%` }} />}
@@ -88,6 +86,10 @@ class PokemonDetails extends Component {
         ) : null
     }
 }
+
+// AIzaSyCCCH7huOkKNhv6PlFSapwdZ3_15kBeW4k
+//    AIzaSyCCCH7huOkKNhv6PlFSapwdZ3_15kBeW4k
+
 
 const mapStateToProps = (state) => {
     return { 
