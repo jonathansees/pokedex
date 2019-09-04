@@ -1,0 +1,116 @@
+@import './variables.scss';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    margin: 0 0 50px 0;
+    // background: $primary-color;
+}
+
+.container {
+    margin: 0 50px;
+}
+
+@media screen and (max-width: $small) {
+    .container {
+        margin: 0 10px;
+    }
+}
+
+@media screen and (min-width: $large) {
+    .container {
+        margin: 0 100px;
+    }
+}
+
+@media screen and (min-width: $xlarge) {
+    .container {
+        margin: 0 300px;
+    }
+}
+
+.main-header {
+    background-image: linear-gradient(to bottom, rgba(0,0,255,0), rgba(0,0,255,.5));
+    background-position: center; 
+    background-size: cover;
+    color: white;
+    height: $header-height;
+    margin: 0 0 30px 0;
+
+    h1 {
+        margin: 0;
+        padding-top: 30px;
+    }
+
+    .btn-floating {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        transform: translateX(-50%);
+        opacity: 0.75;
+        height: 100%;
+
+        .arrow {
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            // align-items: center;
+            // justify-content: space-between;
+
+            &__top {
+                // height: 50px;
+                transform: translateY(60px) rotate(-90deg);
+                
+                -webkit-animation: bounce 2s infinite ease-out 5s backwards; /* Safari 4.0 - 8.0 */
+                animation: bounce 2s infinite ease-out 5s backwards;
+            }
+
+            &__middle {
+                transform: translateY(30px) rotate(-90deg);
+                
+                -webkit-animation: bounce 2s infinite ease-out 5.15s backwards; /* Safari 4.0 - 8.0 */
+                animation: bounce 2s infinite ease-out 5.15s backwards;
+            }
+
+            &__bottom {
+                transform: rotate(-90deg);
+                
+                -webkit-animation: bounce 2s infinite ease-out 5.3s backwards; /* Safari 4.0 - 8.0 */
+                animation: bounce 2s infinite ease-out 5.3s backwards;
+            }
+        }
+
+        
+    }
+
+    .logo-holder {
+        // background-color: aqua;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .logo {
+            height: 175px;
+        }
+
+        .pokeball {
+            height: 100px;
+            transform: translateY(-50px)
+        }
+    }
+}
+
+@keyframes bounce {
+    from {height: 30px; opacity: .5}
+    25% {height: 45px; opacity: 1}
+    50% {height: 30px; opacity: .5}
+    to {height: 30px; opacity: .5}
+}

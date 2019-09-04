@@ -1,22 +1,19 @@
 import * as actionTypes from './actionTypes';
 import pokeapi from '../apis/pokeapi';
 import location from '../apis/locationapi';
-import _ from 'lodash';
 
 export const fetchPokemons = () => async dispatch => {
-    const response = await pokeapi.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+    const response = await pokeapi.get('?limit=151');
     // const response = await pokeapi.get('https://pokeapi.co/api/v2/pokemon');
 
-    const pokemon = Promise.all(response.data.results.map(async pokemon =>  {
-        const response = await pokeapi.get(pokemon.url)
-        return response.data
-    }))
+    response.data.results.map(pokemon =>  {
+        const id = pokemon.url.slice(34, pokemon.url.length - 1)
+        pokemon.id = parseInt(id)
+    })
     
-    pokemon.then(function(result) {
-        dispatch({
-            type: actionTypes.FETCH_POKEMONS,
-            payload: result
-        })
+    dispatch({
+        type: actionTypes.FETCH_POKEMONS,
+        payload: response.data.results
     })
 };
 
@@ -27,7 +24,7 @@ const fetchLocation = async (id) => {
 };
 
 export const fetchPokemon = (id) => async dispatch => {
-    const response = await pokeapi.get('https://pokeapi.co/api/v2/pokemon/' + id);
+    const response = await pokeapi.get('/' + id);
 
     const locations = await fetchLocation(response.data.id);
     response.data.locations = locations;
@@ -35,6 +32,13 @@ export const fetchPokemon = (id) => async dispatch => {
     dispatch({
         type: actionTypes.FETCH_POKEMON,
         payload: response.data
+    })
+};
+
+export const clearPokemon = () => async dispatch => {
+    dispatch({
+        type: actionTypes.FETCH_POKEMON,
+        payload: []
     })
 };
 
@@ -46,7 +50,6 @@ export const updateBag = (id) => async dispatch => {
 };
 
 export const toggleBag = (open) => async dispatch => {
-    console.log(open)
     dispatch({
         type: actionTypes.TOGGLE_BAG,
         payload: open

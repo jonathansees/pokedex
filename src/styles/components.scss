@@ -1,0 +1,149 @@
+///////////////SEARCHBAR START//////////////////
+
+.search {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+
+    &__input {
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+        background-color: transparent;
+        border: none;
+        padding: 15px 45px 15px 25px;
+        margin-right: -57.5px;
+        width: 100%;
+        animation: all 5s;
+
+        &:focus {
+            outline: none;
+            background-color: whitesmoke;
+        }
+    }
+
+    &__input:focus + &__button {
+        background-color: whitesmoke;
+    }
+
+    &__button {
+        border: none;
+        background-color: transparent;
+    }
+
+    &__icon {
+        height: 20px;
+        width: 20px;
+        padding-right: 25px;
+    }
+}
+
+///////////////SEARCHBAR END///////////////////
+
+///////////////CHECKBOX START//////////////////
+
+$secondary-color: color("teal", "lighten-1") !default;
+$switch-bg-color: $secondary-color !default;
+$switch-checked-lever-bg: $switch-bg-color !default;
+$switch-unchecked-bg: #F1F1F1 !default;
+$switch-unchecked-lever-bg: rgba(0,0,0,.38) !default;
+$switch-radius: 15px !default;$input-height: 3rem !default;
+$input-disabled-solid-color: #949494 !default;
+
+.switch,
+.switch * {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+}
+
+.information {
+    .check-box {
+        margin-top: 20px;
+    }
+
+    .switch,
+    .switch * {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+   
+.switch label {
+    cursor: pointer;
+}
+   
+.switch label input[type=checkbox] {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .lever {
+        background-color: $switch-checked-lever-bg;
+
+        &:before, &:after {
+            left: 18px;
+        }
+
+        &:after {
+            background-color: $switch-bg-color;
+        }
+    }
+}
+   
+.switch label .lever {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 36px;
+    height: 14px;
+    background-color: $switch-unchecked-lever-bg;
+    border-radius: $switch-radius;
+    margin-right: 10px;
+    transition: background 0.3s ease;
+    vertical-align: middle;
+    margin: 0 16px;
+
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        left: 0;
+        top: -3px;
+        transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease, transform .1s ease;
+    }
+   
+    &:before {
+        background-color: $switch-bg-color;
+    }
+   
+     &:after {
+       background-color: $switch-unchecked-bg;
+       box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    }
+}
+   
+   // Switch active style
+input[type=checkbox]:checked:not(:disabled) ~ .lever:active::before,
+input[type=checkbox]:checked:not(:disabled).tabbed:focus ~ .lever::before {
+    transform: scale(2.4);
+    background-color: $switch-bg-color;
+}
+   
+input[type=checkbox]:not(:disabled) ~ .lever:active:before,
+input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
+    transform: scale(2.4);
+    background-color: rgba(0,0,0,.08);
+}
+
+///////////////CHECKBOX END////////////////////
+

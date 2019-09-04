@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import PokemonLogo from "../assets/svg/PokemonLogo";
 import LeftArrow from "../assets/svg/LeftArrow";
+import '../styles/navbar.scss';
 
 const Nav = () => {
     return (

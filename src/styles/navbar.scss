@@ -1,0 +1,71 @@
+@import './variables.scss';
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    background-color: $primary-blue;
+    // background-color: transparent;
+    z-index: 100;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+
+    .container {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .w20 {
+            width: 30%;
+            height: 100%;
+        }
+
+        .w40 {
+            width: 40%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user {
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            &--nav {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding: 0 15px;
+                text-decoration: none;
+
+                &:hover {
+                    background-color: lighten($primary-blue, 5%);
+                }
+
+                &__icon {
+    
+                }
+        
+                &__back {
+                    color: white;
+                    font-size: 16px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $small) {
+    .spacer {
+        display: none;
+    }
+}

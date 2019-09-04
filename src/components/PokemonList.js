@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPokemons, toggleBag } from '../actions';
 
+import Header from './Header';
 import CheckBox from './CheckBox';
 import SearchBar from './SearchBar';
 import List from './List';
+import '../styles/main.scss';
 
 class PokemonList extends Component {
     state = {
@@ -34,6 +36,7 @@ class PokemonList extends Component {
     render() {
         return (
             <React.Fragment>
+            <Header></Header>
                 <div className="container" id="content">
                     <CheckBox 
                         off="All Pokemon"

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPokemon, updateBag } from '../actions';
+import { fetchPokemon, updateBag, clearPokemon } from '../actions';
 
 import Card from './Card';
 import CheckBox from './CheckBox';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import '../styles/details.scss';
+import '../styles/card.scss';
 
 class PokemonDetails extends Component {
 
@@ -12,8 +14,32 @@ class PokemonDetails extends Component {
         this.props.fetchPokemon(this.props.match.params.id)
     }
 
+    componentWillUnmount() {
+        this.props.clearPokemon()
+    }
+
     changeHandler = () => {
         this.props.updateBag(this.props.pokemon.id)
+    }
+
+    renderType () {
+        let types = ""
+
+        this.props.pokemon.types.map(type => {
+            types += type.type.name + ", "
+        });
+
+        return types.slice(0, types.length - 2);
+    }
+
+    renderAbilities () {
+        let abilities = ""
+
+        this.props.pokemon.abilities.map(ability => {
+            abilities += ability.ability.name + ", "
+        });
+
+        return abilities.slice(0, abilities.length - 2);
     }
 
     render() {
@@ -25,7 +51,7 @@ class PokemonDetails extends Component {
                 {this.props.pokemon.locations.map(location => {
                     const lat = parseFloat(location.slice(0, location.indexOf(",")))
                     const lng = parseFloat(location.slice((location.indexOf(",") + 1), location.length))
-                    return <Marker position={{ lat, lng }} />
+                    return <Marker key={location} position={{ lat, lng }} />
                 })}
             </GoogleMap>
         ))
@@ -43,9 +69,10 @@ class PokemonDetails extends Component {
                             checked={this.props.bag.includes(this.props.pokemon.id)}
                         />
                         
-                        <p>Height: {this.props.pokemon.height}</p>
-                        <p>Weight: {this.props.pokemon.weight}</p>
-                        <p>Type: Fire, Flying</p>
+                        <p><span>Height:</span> {this.props.pokemon.height}</p>
+                        <p><span>Weight:</span> {this.props.pokemon.weight}</p>
+                        <p><span>Type:</span> {this.renderType()}</p>
+                        <p><span>Abilities:</span> {this.renderAbilities()}</p>
                     </div>
                     <div className="map">
                         <MyMapComponent
@@ -71,5 +98,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    { fetchPokemon, updateBag }
+    { fetchPokemon, updateBag, clearPokemon }
 )(PokemonDetails);

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../styles/components.scss';
+
 const CheckBox = (props) => {
     let changeHandler = (checked) => {
         props.onChange(checked)
@@ -13,8 +15,7 @@ const CheckBox = (props) => {
                     { props.off }
                     <input 
                         type="checkbox"
-                        name="checkbox" 
-                        class="switch"
+                        name="checkbox"
                         onChange={(event) => changeHandler(event.target.checked)}
                         checked={props.checked} />
                     <span className="lever"></span>

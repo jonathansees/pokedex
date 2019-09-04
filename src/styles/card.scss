@@ -1,0 +1,172 @@
+@import './variables.scss';
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    grid-gap: 50px 20px;
+
+    @media screen and (max-width: $small) {
+        grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    }
+    
+    @media screen and (min-width: $large) {
+        grid-template-columns: repeat(auto-fit, minmax(175px, .5fr));
+    }
+    
+    @media screen and (min-width: $xlarge) {
+        grid-template-columns: repeat(auto-fit, minmax(175px, .2fr));
+    }
+
+    .card {
+    
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1), 0 12px 20px 0 rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-decoration: none;
+    transition: all .5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+
+    &__img {
+        background-color: lightcyan;
+        width: 100%;
+        grid-row: 1/2;
+        grid-column: 1/-1;
+    }
+
+    &__name {
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        justify-self: center;
+        align-self: end;
+
+        width: 80%;
+        font-size: 16px;
+        letter-spacing: 3px;
+        text-transform: capitalize;
+        text-align: center;
+        padding: 10px 5px;
+        margin: 0;
+        background-color: $primary-blue;
+        color: white;
+        font-weight: 700;
+        transform: translateY(50%);
+        z-index: 2;
+        
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+// $card-image-top-gradient: rgba(245, 246, 252, 0.75);
+// $card-image-bottom-gradient: darken($card-image-top-gradient, 75%);
+// $fire: rgba(255, 0, 0,.75);
+// $water: rgba(0, 0, 255,.75);
+// $poison: rgba(0,128,0,.75);
+// $grass: rgba(0,128,0,.75);
+// $flying: rgba(135,206,235,.75);
+// $electric: rgba(255,255,0,.75);
+// $steel: rgba(192,192,192,.75);
+// $ground: rgba(165,42,42,.75);
+// $dark: rgba(25,25,112,.75);
+// $fairy: rgba(219,112,147,.75);
+// $ice: rgba(64,224,208,.75);
+// $psychic: rgba(148,0,211,.75);
+// $fighting: rgba(128,0,0,.75);
+// $rock: rgba(169,169,169,.75);
+// $bug: rgba(0,128,0,.75);
+
+
+// .card {
+
+//     .card-title {
+//         text-transform: capitalize;
+//     }
+
+//     .card-image {
+//         background-color: lightgray;
+//         background-repeat: no-repeat;
+//         background-size: cover;
+//         background-position: center; 
+
+//         &.fire {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($fire, 40%)),
+//             url('https://images.pexels.com/photos/1749/fire-orange-emergency-burning.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+//         }
+//         &.water {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($water, 40%)),
+//             url("https://images.pexels.com/photos/261403/pexels-photo-261403.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }   
+//         &.poison {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($poison, 40%)),
+//             url("https://images.pexels.com/photos/1638073/pexels-photo-1638073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.grass {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($grass, 40%)),
+//             url("https://images.pexels.com/photos/56011/rush-meadow-ornamental-grass-spring-56011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.flying {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($flying, 40%)),
+//             url("https://images.pexels.com/photos/55787/pexels-photo-55787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.normal {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, $card-image-bottom-gradient),
+//             url("https://images.pexels.com/photos/1050305/pexels-photo-1050305.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.electric {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($electric, 40%)),
+//             url("https://images.pexels.com/photos/53459/lightning-storm-weather-sky-53459.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.steel {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($steel, 40%)),
+//             url("https://images.pexels.com/photos/53176/architecture-iron-steel-building-53176.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.ground {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($ground, 40%)),
+//             url("https://images.pexels.com/photos/1097016/pexels-photo-1097016.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.dark {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($dark, 40%)),
+//             url("https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.fairy {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($fairy, 40%)),
+//             url("https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.ice {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($ice, 40%)),
+//             url("https://images.pexels.com/photos/300857/pexels-photo-300857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.psychic {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($psychic, 40%)),
+//             url("https://images.pexels.com/photos/604671/pexels-photo-604671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.fighting {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($fighting, 40%)),
+//             url("https://media.istockphoto.com/photos/empty-boxing-ring-arena-picture-id522438599?k=6&m=522438599&s=612x612&w=0&h=kahEbWkBVrQZqKYihpK0Smx1sUzrD8MeTlQTfNjhoLI=");
+//         }
+//         &.rock {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($rock, 40%)),
+//             url("https://images.pexels.com/photos/383559/pexels-photo-383559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//         &.bug {
+//             background-image: linear-gradient(to bottom, $card-image-top-gradient, darken($bug, 40%)),
+//             url("https://images.pexels.com/photos/1068508/pexels-photo-1068508.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+//         }
+//     }
+// }

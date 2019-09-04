@@ -1,6 +1,7 @@
 import React from 'react';
 
 import MagnifyingGlass from "../assets/svg/MagnifyingGlass";
+import '../styles/components.scss';
 
 const SearchBar = (props) => {
     let filterPokemon = (event) => {
