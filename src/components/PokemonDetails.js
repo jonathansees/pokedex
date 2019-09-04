@@ -43,6 +43,8 @@ class PokemonDetails extends Component {
     }
 
     render() {
+        const API_KEY = process.env.REACT_APP_POKEAPI_API_KEY;
+
         const MyMapComponent = withScriptjs(withGoogleMap((props) =>
             <GoogleMap
                 defaultZoom={8}
@@ -75,7 +77,7 @@ class PokemonDetails extends Component {
                     <div className="map">
                         <MyMapComponent
                             isMarkerShown
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCCH7huOkKNhv6PlFSapwdZ3_15kBeW4k"
+                            googleMapURL={"https://maps.googleapis.com/maps/api/js?key=" + API_KEY}
                             loadingElement={<div style={{ height: `100%` }} />}
                             containerElement={<div style={{ height: `400px` }} />}
                             mapElement={<div style={{ height: `100%` }} />}

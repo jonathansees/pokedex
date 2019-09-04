@@ -15,6 +15,7 @@ class PokemonList extends Component {
 
     componentDidMount() {
         this.props.fetchPokemons();
+        console.log(process.env.REACT_APP_POKEAPI_API_KEY)
     }
 
     filterPokemon = (filterString) => {
